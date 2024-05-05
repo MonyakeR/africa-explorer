@@ -1,0 +1,31 @@
+"0","all_pop_raw <- read_csv("
+"0","  ""data/API_SP.POP.TOTL_DS2_en_csv_v2_228793/API_SP.POP.TOTL_DS2_en_csv_v2_228793.csv"", "
+"0","  skip = 4"
+"0",") "
+"1","[38;5;236mNew names:
+[36m•[38;5;236m `` -> `...69`[39m
+"
+"1","[1mRows: [22m[34m266[39m [1mColumns: [22m[34m69[39m
+"
+"1","[36m──[39m [1mColumn specification[22m [36m──────────────────────────────────────────────────────────────────────────────────[39m
+[1mDelimiter:[22m "",""
+[31mchr[39m  (4): Country Name, Country Code, Indicator Name, Indicator Code
+[32mdbl[39m (63): 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 19...
+[33mlgl[39m  (2): 2023, ...69
+"
+"1","
+[36mℹ[39m Use `spec()` to retrieve the full column specification for this data.
+[36mℹ[39m Specify the column types or set `show_col_types = FALSE` to quiet this message.
+"
+"0","africa_country_codes <- read_csv(""data/africa-in-numbers - country-codes.csv"")"
+"1","[1mRows: [22m[34m54[39m [1mColumns: [22m[34m4[39m
+"
+"1","[36m──[39m [1mColumn specification[22m [36m──────────────────────────────────────────────────────────────────────────────────[39m
+[1mDelimiter:[22m "",""
+[31mchr[39m (3): Country, ISO-3166 (Two Letter), ISO-3166 (Three Letter)
+[32mdbl[39m (1): ISO-3166 (Numeric)
+"
+"1","
+[36mℹ[39m Use `spec()` to retrieve the full column specification for this data.
+[36mℹ[39m Specify the column types or set `show_col_types = FALSE` to quiet this message.
+"
