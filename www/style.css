@@ -1,0 +1,60 @@
+
+/* load the google font for the numbers in the table */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+/* style the country coloum in the table  */
+.country {
+  display: flex;
+  align-items: center;
+}
+
+.country-flag {
+  height: auto;
+  border: 1px solid #f0f0f0;
+  width: 30px;
+}
+
+.country-name {
+  margin-left: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.iso-code {
+  margin-left: 0.35rem;
+  color: hsl(0, 0%, 45%);
+  font-size: 0.7125rem;
+}
+
+/*  style the currency column in the table */
+.currency-code {
+  margin-left: 0.35rem;
+  color: hsl(0, 0%, 45%);
+  font-size: 0.7125rem;
+}
+
+/*  default column styling */
+.header {
+  border-bottom-color: #555;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* Highlight headers when sorting */
+.header:hover,
+.header:focus,
+.header[aria-sort="ascending"],
+.header[aria-sort="descending"] {
+  background-color: #eee;
+}
+
+/* Use box-shadow to create row borders that appear behind vertical borders */
+.cell {
+  box-shadow: inset 0 -1px 0 rgba(249, 250, 251, 1);
+}
+
+/*  add border to the left side of the cell */
+.border-left {
+  border-left: 2px solid #555;
+}

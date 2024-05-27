@@ -4,46 +4,69 @@ format: html
 editor: source
 ---
 
-load the libraries
+## load the libraries
 
 ```{r}
 #| message: false
 #| warning: false
 
 library(tidyverse)
+library(readxl)
 ```
 
-load the data
+## load the data
 
 ```{r}
-all_pop_raw <- read_csv(
-  "data/API_SP.POP.TOTL_DS2_en_csv_v2_228793/API_SP.POP.TOTL_DS2_en_csv_v2_228793.csv", 
-  skip = 4
-) 
+wdi_raw <- read_excel("data/WDI_EXCEL/WDIEXCEL.xlsx", sheet = "Data")
 
-africa_country_codes <- read_csv("data/africa-in-numbers - country-codes.csv")
+africa <- read_csv("data/africa - overview.csv")
 ```
 
-Data cleaning
+**Filter the World Development Indicators (WDI) data for African countries**
 
 ```{r}
-# remove all columns that have all NA values and make the data tidy
-all_pop <- all_pop_raw %>% 
-  select(where(~ !all(is.na(.x)))) %>% 
-  pivot_longer(cols = paste(1960:2022), names_to = "Year", values_to = "Population")
-
-# remove columns that have the same observation for each row
-all_pop <- all_pop %>% 
-  select(!c(`Indicator Name`, `Indicator Code`))
-
 # filter only for the African countries
-african_pop <- all_pop %>% 
-  right_join(africa_country_codes, by = join_by("Country Code" == "ISO-3166 (Three Letter)")) 
+africa_wdi <- wdi_raw %>% 
+  right_join(
+    africa %>% select(!`Country Name`), 
+    by = join_by("Country Code" == "Country Code")
+  ) 
 ```
+
+## Wrangling and exploration
+
+```{r}
+africa_wdi <- africa_wdi %>% 
+  pivot_longer(cols = "1960":"2023", names_to = "year", values_to = "value")
+```
+
+
+Filter for the indicators that will be in the app 
+
+```{r}
+indicators <- c(
+  "Population, total",
+  "GDP per capita (current US$)"
+)
+
+africa_wdi <- africa_wdi %>% 
+  filter(`Indicator Name` %in% indicators, year == "2022") %>% 
+  select(!c("Indicator Code", "year")) %>% 
+  pivot_wider(names_from = `Indicator Name`, values_from = value)
+```
+
+Split the currency
+
+```{r}
+africa_wdi <- africa_wdi %>% 
+  mutate(Currency = gsub("\\s*\\(([^)]+)\\)", ", \\1", Currency)) %>% 
+  separate_wider_delim(Currency, names = c("Currency", "Currency Code"), delim = ",")
+```
+
 
 Save the africa data set
 
 ```{r}
-write_csv(african_pop, "data/population_africa.csv") 
+write_csv(africa_wdi, "data/africa.csv") 
 ```
 

@@ -1,0 +1,55 @@
+Country Name,Country Code,Capital,Currency,Currency Code,GDP per capita (current US$),"Population, total"
+Algeria,DZA,Algiers,Algerian dinar, DZD,4342.637967965221,44903225
+Angola,AGO,Luanda,Kwanza, AOA,3000.444230531725,35588987
+Benin,BEN,Porto-Novo,Central African CFA franc, XAF,1302.8510362682418,13352864
+Botswana,BWA,Gaborone,Botswanan pula, BWP,7738.878804078027,2630296
+Burkina Faso,BFA,Ouagadougou,Central African CFA franc, XAF,830.0371503342899,22673762
+Burundi,BDI,Bujumbura,Burundian franc, BIF,259.02503136351527,12889576
+Cabo Verde,CPV,Praia,Cabo Verdean Escudo, CVE,3754.3047937160277,593149
+Cameroon,CMR,Yaounde,Central African CFA franc, XAF,1563.4889403445936,27914536
+Central African Republic,CAF,Bangui,Central African CFA franc, XAF,427.05809619126865,5579144
+Chad,TCD,N'Djamena,Central African CFA franc, XAF,716.8043811345844,17723315
+Comoros,COM,Moroni,Comoros Franc, KMF,1484.8924647254212,836774
+"Congo, Dem. Rep.",COD,Kinshasa,Congolese Franc, CDF,653.6562230693542,99010212
+"Congo, Rep.",COG,Brazzaville,Central African CFA franc, XAF,2649.2250223064207,5970424
+Cote d'Ivoire,CIV,Yamoussoukro,Central African CFA franc, XAF,2486.41219394248,28160542
+Djibouti,DJI,Djibouti,Djiboutian Franc, DJF,3136.1127680487275,1120849
+"Egypt, Arab Rep.",EGY,Cairo,Egyptian Pound, EGP,4295.407495610141,110990103
+Equatorial Guinea,GNQ,Malabo,Central African CFA franc, XAF,7182.265382050267,1674908
+Eritrea,ERI,Asmara,Nakfa, ERN,NA,3684032
+Eswatini,SWZ,Mbabane,Swazi Lilangeni, SZL,3986.8866374379804,1201670
+Ethiopia,ETH,Addis Ababa,Birr, ETB,1027.585910959643,123379924
+Gabon,GAB,Libreville,Central African CFA franc, XAF,8820.347336823159,2388992
+"Gambia, The",GMB,Banjul,Dalasi, GMD,808.278281490135,2705992
+Ghana,GHA,Accra,Cedi, GHS,2203.5589351830304,33475870
+Guinea,GIN,Conakry,Guinean franc, GNF,1515.167947775839,13859341
+Guinea-Bissau,GNB,Bissau,West African CFA franc, XOF,775.8289657453653,2105566
+Kenya,KEN,Nairobi,Kenyan shilling, KES,2099.3019382669636,54027487
+Lesotho,LSO,Maseru,Lesotho Loti, LSL,969.9357601594056,2305825
+Liberia,LBR,Monrovia,Liberian dollar, LRD,754.5328429147445,5302681
+Libya,LBY,Tripoli,Libyan dinar, LYD,6716.095984623283,6812341
+Madagascar,MDG,Antananarivo,Malagasy ariary, MGA,516.592615982213,29611714
+Malawi,MWI,Lilongwe,Malawian kwacha, MWK,645.1586920671853,20405317
+Mali,MLI,Bamako,West African CFA franc, XOF,833.2972550930708,22593590
+Mauritania,MRT,Nouakchott,Ouguiya, MRO,2065.1555157010553,4736139
+Mauritius,MUS,Port Louis,Mauritian rupee, MUR,10256.230305357594,1262523
+Morocco,MAR,Rabat,Moroccan dirham, MAD,3441.99145507813,37457971
+Mozambique,MOZ,Maputo,Metical, MZN,558.2986064482209,32969518
+Namibia,NAM,Windhoek,Namibian dollar, NAD,5031.1150301147845,2567012
+Niger,NER,Niamey,West African CFA franc, XOF,585.4049291710264,26207977
+Nigeria,NGA,Abuja,Naira, NGN,2162.6337342857682,218541212
+Rwanda,RWA,Kigali,Rwandan  Francs, RWF,966.2320713619931,13776698
+Sao Tome and Principe,STP,Sao Tome,Dobra, STD,2386.6961758183975,227380
+Senegal,SEN,Dakar,West African CFA franc, XOF,1598.726433360121,17316449
+Seychelles,SYC,Victoria,Seychelles rupee, SCR,13250.45583323752,119878
+Sierra Leone,SLE,Freetown,Sierra Leonean Leone, SLL,475.79572784462187,8605718
+Somalia,SOM,Mogadishu,Somalia Shilling, SOS,592.1031219720884,17597511
+South Africa,ZAF,Pretoria,Rand, ZAR,6766.481254294777,59893885
+South Sudan,SSD,Juba,South Sudanese Pound, SSP,NA,10913164
+Sudan,SDN,Khartoum,Sudan Pound, SDG,1102.146484375,46874204
+Tanzania,TZA,Dodoma,Tanzanian Shilling, TZS,1192.76647949219,65497748
+Togo,TGO,Lome,West African CFA franc, XOF,942.6499015795356,8848699
+Tunisia,TUN,Tunis,Tunisian Dinar, TND,3747.4193914928323,12356117
+Uganda,UGA,Kampala,Ugandan Shilling, UGX,964.3958694764503,47249585
+Zambia,ZMB,Lusaka,Zambian Kwacha, ZMW,1456.9015701544504,20017675
+Zimbabwe,ZWE,Harare,Zimbabwe Gold, ZiG,1676.8214889672593,16320537
