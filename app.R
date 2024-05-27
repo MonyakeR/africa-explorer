@@ -66,7 +66,7 @@ server <- function(input, output, session) {
             cell = function(value, index) {
               div(
                 class = "country",
-                img(class = "country-flag", alt = paste(value, "flag"), src = sprintf("/images/flags/%s.svg", value)),
+                img(class = "country-flag", alt = paste(value, "flag"), src = sprintf("images/flags/%s.svg", value)),
                 div(
                   span(class = "country-name", value),
                   span(class = "iso-code", sprintf("%s", tbl_africa()[index, "Country Code"]))
