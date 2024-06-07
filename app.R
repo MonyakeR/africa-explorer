@@ -21,8 +21,10 @@ ui <- page_navbar(
     version = 5, 
     base_font = font_google("Public Sans")
   ),
-  tags$head(
-    tags$link(rel = "stylesheet", type = "text/css", href = "style.css")
+  header = tagList(
+    tags$head(
+      tags$link(rel = "stylesheet", type = "text/css", href = "style.css")
+    )
   ),
   nav_spacer(),
   nav_panel(
@@ -43,6 +45,20 @@ server <- function(input, output, session) {
     africa 
   })
   
+  # function to show details when user clicks on a country in the table
+  row_details <- function(index) {
+    country_profile <- tbl_africa()[index, ]
+    
+    detail <- div(
+      class = "country-details",
+      div(
+        class = "historical-background",
+        div(class = "detail-label", "Country profile:"),
+        country_profile$`Country Profile`
+      )
+    )
+  }
+  
   # show the table with the countries
   output$countries <- renderReactable({
       reactable(
@@ -52,6 +68,7 @@ server <- function(input, output, session) {
         highlight = TRUE,
         defaultSorted = "Population, total",
         defaultSortOrder = "desc",
+        details = row_details,
         defaultColDef = colDef(
           format = colFormat(separators = TRUE),
           vAlign = "center",
@@ -84,6 +101,7 @@ server <- function(input, output, session) {
             }
           ),
           `Currency Code` = colDef(show = FALSE),
+          `Country Profile` = colDef(show = FALSE),
           `GDP per capita (current US$)` = colDef(
             minWidth = 100,
             format = colFormat(digits = 0, separators = TRUE),
