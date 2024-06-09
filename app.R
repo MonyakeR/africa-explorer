@@ -54,7 +54,7 @@ server <- function(input, output, session) {
       div(
         class = "historical-background",
         div(class = "detail-label", "Country profile:"),
-        country_profile$`Country Profile`
+        country_profile$country_profile
       )
     )
   }
@@ -66,7 +66,7 @@ server <- function(input, output, session) {
         searchable = TRUE,
         pagination = FALSE,
         highlight = TRUE,
-        defaultSorted = "Population, total",
+        defaultSorted = "population_total",
         defaultSortOrder = "desc",
         details = row_details,
         defaultColDef = colDef(
@@ -77,16 +77,16 @@ server <- function(input, output, session) {
           headerClass = "header"
         ),
         columns = list(
-          `Country Name` = colDef(
+          country_name = colDef(
+            name = "Country Name",
             minWidth = 160,
-            #filterable = TRUE,
             cell = function(value, index) {
               div(
                 class = "country",
                 img(class = "country-flag", alt = paste(value, "flag"), src = sprintf("images/flags/%s.svg", value)),
                 div(
                   span(class = "country-name", value),
-                  span(class = "iso-code", sprintf("%s", tbl_africa()[index, "Country Code"]))
+                  span(class = "iso-code", sprintf("%s", tbl_africa()[index, "country_code"]))
                 )
               )
             }
@@ -96,20 +96,28 @@ server <- function(input, output, session) {
             cell = function(value, index) {
               div(
                 span(class = "currency", value),
-                span(class = "currency-code", sprintf("%s", tbl_africa()[index, "Currency Code"]))
+                span(class = "currency-code", sprintf("%s", tbl_africa()[index, "currency_code"]))
               )
             }
           ),
-          `Currency Code` = colDef(show = FALSE),
-          `Country Profile` = colDef(show = FALSE),
-          `GDP per capita (current US$)` = colDef(
+          currency_code = colDef(show = FALSE),
+          country_profile = colDef(show = FALSE),
+          gdp_per_capita = colDef(
+            name = "GDP per capita (current US$)",
             minWidth = 100,
             format = colFormat(digits = 0, separators = TRUE),
             class = "border-left",
             style = function(value) {
+              
+              gdp_pc_min <- min(tbl_africa()$gdp_per_capita, na.rm = TRUE)
+              gdp_pc_max <- max(tbl_africa()$gdp_per_capita, na.rm = TRUE)
+              
               if (!is.na(value)) {
-                normalised <- (value - min(tbl_africa()$`GDP per capita (current US$)`, na.rm = TRUE)) / (max(tbl_africa()$`GDP per capita (current US$)`, na.rm = TRUE) - min(tbl_africa()$`GDP per capita (current US$)`, na.rm = TRUE))
-                colour <-  rgb(colorRamp(c("#d8ebcc", "#5ea76a"))(normalised), maxColorValue = 255)
+                normalised <- (value - gdp_pc_min) / (gdp_pc_max - gdp_pc_min)
+                colour <-  rgb(
+                  colorRamp(c("#d8ebcc", "#5ea76a"))(normalised), 
+                  maxColorValue = 255
+                )
                 list(
                   background = colour,
                   fontFamily = "JetBrains Mono"
@@ -117,14 +125,18 @@ server <- function(input, output, session) {
               }
             }
           ),
-          `Population, total` = colDef(
+          population_total = colDef(
             minWidth = 100,
             name = "Population (2022)",
             align = "right",
             class = "border-left",
             style = function(value) {
+              
+              pop_min <- min(tbl_africa()$population_total)
+              pop_max <- max(tbl_africa()$population_total)
+              
               if (!is.na(value)) {
-                normalised <- (value - min(tbl_africa()$`Population, total`)) / (max(tbl_africa()$`Population, total`) - min(tbl_africa()$`Population, total`))
+                normalised <- (value - pop_min) / (pop_max - pop_min)
                 colour <-  rgb(colorRamp(c("#92c5de", "#023959"))(normalised), maxColorValue = 255)
                 list(
                   background = colour,

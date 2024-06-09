@@ -63,6 +63,22 @@ africa_wdi <- africa_wdi %>%
   separate_wider_delim(Currency, names = c("Currency", "Currency Code"), delim = ",")
 ```
 
+Rename the columns to make it easy to work with
+
+```{r}
+africa_wdi <- africa_wdi %>% 
+  rename(
+    country_name = `Country Name`,
+    country_code = `Country Code`,
+    capital = Capital,
+    currency = Currency,
+    currency_code = `Currency Code`,
+    country_profile = `Country Profile`,
+    gdp_per_capita = `GDP per capita (current US$)`,
+    population_total = `Population, total`
+  )
+```
+
 
 Save the africa data set
 
