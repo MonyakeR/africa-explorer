@@ -10,7 +10,7 @@ library(tidyverse)
 source("www/R/utils.R")
 
 # load the data set
-africa <- read_csv("data/africa.csv")
+africa <- vroom::vroom("data/africa.csv")
 
 # define the ui
 ui <- page_navbar(
