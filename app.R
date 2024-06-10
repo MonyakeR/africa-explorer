@@ -47,6 +47,7 @@ server <- function(input, output, session) {
   
   # function to show details when user clicks on a country in the table
   row_details <- function(index) {
+    
     country_profile <- tbl_africa()[index, ]
     
     detail <- div(
