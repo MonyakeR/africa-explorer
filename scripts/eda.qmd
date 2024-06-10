@@ -17,9 +17,9 @@ library(readxl)
 ## load the data
 
 ```{r}
-wdi_raw <- read_excel("data/WDI_EXCEL/WDIEXCEL.xlsx", sheet = "Data")
+wdi_raw <- read_excel(here::here("data/WDI_EXCEL/WDIEXCEL.xlsx"), sheet = "Data")
 
-africa <- read_csv("data/africa - overview.csv")
+africa <- read_csv(here::here("data/africa - overview.csv"))
 ```
 
 **Filter the World Development Indicators (WDI) data for African countries**
@@ -83,6 +83,6 @@ africa_wdi <- africa_wdi %>%
 Save the africa data set
 
 ```{r}
-write_csv(africa_wdi, "data/africa.csv") 
+write_csv(africa_wdi, here::here("data/africa.csv")) 
 ```
 
