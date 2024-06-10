@@ -147,7 +147,7 @@ server <- function(input, output, session) {
               }
             }
           ),
-          `Country Code` = colDef(show = FALSE)
+          country_code = colDef(show = FALSE)
         )
       )
   })
