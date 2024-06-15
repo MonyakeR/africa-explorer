@@ -20,6 +20,8 @@ library(readxl)
 wdi_raw <- read_excel(here::here("data/WDI_EXCEL/WDIEXCEL.xlsx"), sheet = "Data")
 
 africa <- read_csv(here::here("data/africa - overview.csv"))
+
+africa_bbc <- read_csv(here::here("data/africa - bbc.csv"))
 ```
 
 **Filter the World Development Indicators (WDI) data for African countries**
@@ -30,7 +32,11 @@ africa_wdi <- wdi_raw %>%
   right_join(
     africa %>% select(!`Country Name`), 
     by = join_by("Country Code" == "Country Code")
-  ) 
+  ) %>% 
+  right_join(
+    africa_bbc %>% select(!`Country Name`),
+    by = join_by("Country Code" == "Country Code")
+  )
 ```
 
 ## Wrangling and exploration
@@ -75,12 +81,16 @@ africa_wdi <- africa_wdi %>%
     currency_code = `Currency Code`,
     country_profile = `Country Profile`,
     gdp_per_capita = `GDP per capita (current US$)`,
-    population_total = `Population, total`
+    population_total = `Population, total`,
+    area = `Area(sq km)`,
+    languages = Languages,
+    life_expectancy = `Life expectancy`,
+    president = President
   )
 ```
 
 
-Save the africa data set
+Save the Africa data set
 
 ```{r}
 write_csv(africa_wdi, here::here("data/africa.csv")) 

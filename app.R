@@ -33,7 +33,21 @@ ui <- page_navbar(
   ),
   nav_panel(
     title = "About",
-    p("This is a WIP")
+    card(
+      card_header("About"),
+      p("The aim of this project is to demonstrate how interactive tables utilise the details-on-demand principle. By clicking on a table row, users can access additional information."),
+      HTML(
+        '
+        <p>The sources used are as follows:</p>
+         <ul>
+            <li><a href="https://datatopics.worldbank.org/world-development-indicators" target="_blank">World Development Indicators - World Bank</a></li>
+            <li><a href="https://www.international.ucla.edu/asc/countries" target="_blank">Countries - UCLA International Institute</a></li>
+            <li><a href="http://news.bbc.co.uk/1/hi/country_profiles" target="_blank">Country Profiles - BBC News</a></li>
+        </ul>
+         <p>The table was developed by <a href="http://rmonyake.com" target="_blank">Retselisitsoe Monyake.</a></p>
+      '
+      )
+    )
   )
 )
 
@@ -50,12 +64,63 @@ server <- function(input, output, session) {
     
     country_profile <- tbl_africa()[index, ]
     
+    country_field <- function(name, value) {
+      if (name != "Country profile:") {
+        div(
+          class = "detail-value",
+          div(class = "detail-label", name),
+          div(class = "value", value)
+        )
+      } else {
+        div(
+          class = "detail-value",
+          div(class = "detail-label", name),
+          div(id = "country-profile", class = "value", value)
+        )
+      }
+    }
+    
     detail <- div(
       class = "country-details",
       div(
-        class = "historical-background",
-        div(class = "detail-label", "Country profile:"),
-        country_profile$country_profile
+        class = "top-level",
+        div(
+          class = "details",
+          country_field(
+            name = "Population (2022)", 
+            value = format(country_profile$population_total, big.mark = ",")
+          ),
+          country_field(
+            name = "GDP per capita (current US$)", 
+            value = format(round(country_profile$gdp_per_capita, digits = 0), big.mark = ",")
+          ),
+          country_field(
+            name = "Area (sq Km)", 
+            value = format(country_profile$area, big.mark = ",")
+          ),
+          country_field(
+            name = "President", 
+            value = country_profile$president
+          ),
+          country_field(
+            name = "Languages", 
+            value = country_profile$languages
+          ),
+          country_field(
+            name = "Life Expectancy", 
+            value = country_profile$life_expectancy
+          )
+        ),
+        div(
+          img(
+            class = "country-map", 
+            src = sprintf("images/maps/%s.png", country_profile$country_code)
+          )
+        )
+      ),
+      country_field(
+        name = "Country profile:", 
+        value = country_profile$country_profile
       )
     )
   }
@@ -147,10 +212,14 @@ server <- function(input, output, session) {
               }
             }
           ),
-          country_code = colDef(show = FALSE)
+          country_code = colDef(show = FALSE),
+          area = colDef(show = FALSE),
+          languages = colDef(show = FALSE),
+          life_expectancy = colDef(show = FALSE),
+          president = colDef(show = FALSE)
         )
       )
   })
 }
 
-shinyApp(ui, server)
+shinyApp(ui,  server, options = list(launch.browser = FALSE, port = 5288))

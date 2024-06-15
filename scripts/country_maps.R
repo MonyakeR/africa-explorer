@@ -5,14 +5,31 @@ library(tidyverse)
 
 africa <- rnaturalearth::ne_countries(
   scale = "small",
+  type = "sovereignty",
   continent = "africa",
   returnclass = "sf"
 )
 
-country_name = "Nigeria"
-ggplot(data = africa) +
-  geom_sf(fill = "gray80", color = "white") +
-  geom_sf(data = africa %>% filter(name == country_name), fill = "#5ea76a", color = "black") +
-  theme_minimal() +
-  labs(title = paste("Map of Africa Highlighting", country_name),
-       caption = "Data from Natural Earth")
+iso3_codes <- c("DZA", "AGO", "BEN", "BWA", "BFA", "BDI", "CMR", "CPV", "CAF", "TCD", 
+                 "COM", "COG", "COD", "DJI", "EGY", "GNQ", "ERI", "SWZ", "ETH", "GAB", 
+                 "GMB", "GHA", "GIN", "GNB", "CIV", "KEN", "LSO", "LBR", "LBY", "MDG", 
+                 "MWI", "MLI", "MRT", "MUS", "MAR", "MOZ", "NAM", "NER", "NGA", "RWA", 
+                 "STP", "SEN", "SYC", "SLE", "SOM", "ZAF", "SSD", "SDN", "TZA", "TGO", 
+                 "UGA", "ZMB", "ZWE")
+
+
+generate_maps <- function(iso_code) {
+  
+  plt <- ggplot(data = africa) +
+    geom_sf(fill = "gray80", color = "white") +
+    geom_sf(data = africa %>% filter(iso_a3 == iso_code), fill = "#5ea76a", color = "black") +
+    theme_minimal() +
+    coord_sf() +
+    theme_void()
+  
+  ggsave(filename = here::here(paste0("www/images/maps/", iso_code, ".png")), plot = plt, width = 11, height = 8)
+  
+}
+
+walk(iso3_codes, generate_maps)
+

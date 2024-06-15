@@ -64,3 +64,12 @@ country_profiles <- map(profile_urls, get_profiles)
 country_profiles_tbl <- bind_rows(country_profiles)
 
 write_csv(country_profiles_tbl, "data/country_profiles.csv")
+
+
+
+
+
+
+
+
+

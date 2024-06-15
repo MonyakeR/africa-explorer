@@ -1,0 +1,13 @@
+name: africa-explorer
+title: africa-explorer
+username: monyake
+account: monyake
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12079338
+bundleId: 8722771
+url: https://monyake.shinyapps.io/africa-explorer/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: data/africa - overview.csv|data/country_profiles.csv|data/WDI_EXCEL/WDIEXCEL.xlsx|scripts/country_maps.R|scripts/eda.qmd|scripts/scrape_country_profiles.R
